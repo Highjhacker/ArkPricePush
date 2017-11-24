@@ -73,11 +73,10 @@ setInterval(function() {
             timeout: 10,
             wait: true
         });
-        fs.appendFile("logs.txt", moment().toLocaleString() + " : " + data + "\n", function(error) {
-            if (error) {
-                console.log(error);
-            }
-            console.log("Writed to file.");
+        var logger = fs.createWriteStream('logs.txt', {
+            flags: 'a'
         });
+        logger.write(moment().toLocaleString() + " : " + data + "\n");
+        logger.end();
     }, "usd");
 }, 60000);

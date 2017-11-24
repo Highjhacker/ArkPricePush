@@ -10,8 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "forever": "^0.15.3",
+    "hashmap": "^2.3.0",
+    "moment": "^2.19.2",
     "node-emoji": "^1.8.1",
     "node-notifier": "^5.1.2",
+    "pm2": "^2.8.0",
     "push.js": "^1.0.5",
     "request": "^2.83.0"
   }
