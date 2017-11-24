@@ -2,6 +2,8 @@ const request = require('request');
 const notifier = require('node-notifier');
 const path = require('path');
 const emoji = require('node-emoji');
+var fs = require('fs');
+var moment = require('moment');
 
 const currencies = {
     "usd": "\u0024",
@@ -68,7 +70,14 @@ setInterval(function() {
             title: 'Ark Price',
             message: 'Ark price is ' + data,
             icon: path.join(__dirname, 'logo.png'),
-            timeout: 10
+            timeout: 10,
+            wait: true
+        });
+        fs.appendFile("logs.txt", moment().toLocaleString() + " : " + data + "\n", function(error) {
+            if (error) {
+                console.log(error);
+            }
+            console.log("Writed to file.");
         });
     }, "usd");
 }, 60000);
